@@ -1,0 +1,370 @@
+/* ── Daily Tasks ── */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Header Row ── */
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.undoBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--amber-bg);
+  color: var(--amber);
+  border: 1px solid rgba(245, 166, 35, 0.25);
+  transition: all 0.15s;
+  animation: fadeIn 0.2s ease;
+}
+
+.undoBtn:hover {
+  background: rgba(245, 166, 35, 0.18);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(6px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.streakDisplay {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.streakFire {
+  font-size: 24px;
+}
+
+.streakNum {
+  font-size: 26px;
+  font-family: var(--font-d);
+  letter-spacing: -0.5px;
+  color: var(--amber);
+}
+
+.streakLabel {
+  font-size: 12px;
+  color: var(--text3);
+}
+
+.regenBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  background: transparent;
+  color: var(--text2);
+  border: 1px solid var(--border2);
+  transition: all 0.15s;
+}
+
+.regenBtn:hover:not(:disabled) {
+  background: var(--bg4);
+  color: var(--text);
+}
+
+.regenBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Quick Add Suggestions ── */
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.suggestionBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--font-m);
+  background: transparent;
+  border: 1px solid;
+  transition: opacity 0.15s, background 0.15s;
+  cursor: pointer;
+}
+
+.suggestionBtn:hover {
+  opacity: 0.75;
+}
+
+/* ── Section Card ── */
+.section {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 20px;
+}
+
+.sectionTitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.progress {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text3);
+  font-family: var(--font-m);
+}
+
+.empty {
+  color: var(--text3);
+  font-size: 13px;
+  padding: 8px 0;
+}
+
+/* ── Task List ── */
+.taskList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.taskItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  transition: opacity 0.2s;
+}
+
+.taskItem:last-child {
+  border-bottom: none;
+}
+
+.taskDone {
+  opacity: 0.5;
+}
+
+.taskLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  appearance: none; /* REMOVE default style */
+  border: 1px solid #4b5563; /* gray-600 */
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.1s ease;
+}
+
+/* Checked state */
+.checkbox:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Checkmark */
+.checkbox:checked::after {
+  content: "✓";
+  color: white;
+  font-size: 14px;
+}
+
+/* Hover effect */
+.checkbox:hover {
+  border-color: var(--accent);
+}
+
+.taskTitle {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.taskDone .taskTitle {
+  text-decoration: line-through;
+  color: var(--text3);
+}
+
+.taskTag {
+  display: inline-flex;
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: var(--font-m);
+  color: #fff;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── Week Summary ── */
+.weekGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.weekDay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.weekDayToday .weekDayLabel {
+  color: var(--accent2);
+  font-weight: 600;
+}
+
+.weekDayLabel {
+  font-size: 11px;
+  color: var(--text3);
+}
+
+.weekDayDot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg4);
+}
+
+.weekDayDone {
+  background: var(--green);
+}
+
+.weekDayCount {
+  font-size: 11px;
+  color: var(--text3);
+  font-family: var(--font-m);
+}
+
+.heatmapWrap {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Consistency Grid — removed, replaced by ConsistencyHeatmap component ── */
+
+.taskRight {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.deleteTaskBtn {
+  background: none;
+  border: none;
+  color: var(--text3);
+  font-size: 11px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.deleteTaskBtn:hover {
+  color: var(--red);
+}
+
+/* ── Manual Task Input ── */
+.inputContainer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.taskInput {
+  flex: 1;
+  padding: 9px 12px;
+  background: var(--bg4);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--font-b);
+  font-size: 14px;
+  transition: border-color 0.15s;
+}
+
+.taskInput:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.taskInput::placeholder {
+  color: var(--text3);
+}
+
+.addButton {
+  padding: 9px 16px;
+  border-radius: 8px;
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.addButton:hover:not(:disabled) {
+  background: var(--accent2);
+}
+
+.addButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .weekGrid {
+    gap: 4px;
+  }
+
+  .suggestions {
+    flex-direction: column;
+  }
+
+  .suggestionBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

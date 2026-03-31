@@ -1,0 +1,231 @@
+/* ── Dashboard ── */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .statsGrid { grid-template-columns: 1fr 1fr; }
+  .columns   { grid-template-columns: 1fr; }
+}
+
+/* ── Section Card ── */
+.section {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 20px;
+}
+
+.sectionTitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+/* ── Empty / All Done ── */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--text3);
+  font-size: 13px;
+  padding: 12px 0;
+}
+
+.emptyHint {
+  font-size: 11px;
+  color: var(--text3);
+}
+
+.allDone {
+  color: var(--green);
+  font-size: 13px;
+  padding: 12px 0;
+}
+
+/* ── Today's Focus task list ── */
+.taskList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.taskItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  transition: opacity 0.2s;
+}
+
+.taskItem:last-child {
+  border-bottom: none;
+}
+
+.taskItemDone {
+  opacity: 0.45;
+}
+
+.taskLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  appearance: none; /* REMOVE default style */
+  border: 1px solid #4b5563; /* gray-600 */
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.1s ease;
+}
+
+/* Checked state */
+.checkbox:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Checkmark */
+.checkbox:checked::after {
+  content: "✓";
+  color: white;
+  font-size: 10px;
+}
+
+/* Hover effect */
+.checkbox:hover {
+  border-color: var(--accent);
+}
+
+.taskTag {
+  display: inline-flex;
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: var(--font-m);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.taskTitle {
+  font-size: 13px;
+  color: var(--text2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.taskItemDone .taskTitle {
+  text-decoration: line-through;
+  color: var(--text3);
+}
+
+/* ── Recent Applications ── */
+.appList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.appItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.appItem:last-child {
+  border-bottom: none;
+}
+
+.appInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.appName {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.appRole {
+  font-size: 11px;
+  color: var(--text3);
+}
+
+.appMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.stageBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: var(--font-m);
+  color: #fff;
+}
+
+.appDate {
+  font-size: 11px;
+  color: var(--text3);
+  font-family: var(--font-m);
+}
+
+/* ── Funnel ── */
+.funnel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}

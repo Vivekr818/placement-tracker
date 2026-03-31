@@ -1,0 +1,1075 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="PlaceTrack helps students track job applications, manage daily preparation tasks, and stay consistent during campus placements. All-in-one placement tracker.">
+    <meta name="keywords" content="placement tracker, campus placements, job tracker for students, interview preparation, DSA tracker, placement preparation app">
+    <meta property="og:title" content="PlaceTrack – Your Placement Command Center">
+    <meta property="og:description" content="Track applications, manage daily prep, and stay consistent during placement season.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Placement Tracker for Students | Track Jobs, Tasks & Prep – PlaceTrack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style id="landing-style">
+:root {
+  --bg: #070709;
+  --bg2: #0e0e14;
+  --bg3: #141420;
+  --bg4: #1c1c2c;
+  --border: rgba(255,255,255,0.06);
+  --border2: rgba(255,255,255,0.11);
+  --text: #eeecf8;
+  --text2: #9896aa;
+  --text3: #55546a;
+  --v: #7b5ea7;
+  --v2: #a07fd4;
+  --v3: #c9a8ff;
+  --v-glow: rgba(123,94,167,0.35);
+  --g: #2ebd85;
+  --a: #f0a23a;
+  --r: #e05858;
+  --b: #4892d4;
+  --f-d: 'Syne', sans-serif;
+  --f-s: 'Instrument Serif', serif;
+  --f-m: 'JetBrains Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--f-d);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom cursor */
+.cursor {
+  width: 10px; height: 10px;
+  background: var(--v3);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: screen;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(160,127,212,0.5);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.12s ease;
+}
+body:hover .cursor { opacity: 1; }
+
+/* Grid noise overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Nav */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 6vw;
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(7,7,9,0.95) 0%, rgba(7,7,9,0) 100%);
+  backdrop-filter: blur(0px);
+}
+.nav-logo {
+  font-size: 20px; font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text);
+}
+.nav-logo span { color: var(--v3); }
+.nav-links {
+  display: flex; gap: 32px; align-items: center;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px; color: var(--text2);
+  text-decoration: none; letter-spacing: 0.3px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  padding: 9px 20px;
+  background: var(--v);
+  color: #fff !important;
+  border-radius: 8px;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  transition: background 0.2s, transform 0.15s !important;
+}
+.nav-cta:hover { background: var(--v2) !important; transform: translateY(-1px); }
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 120px 6vw 80px;
+  overflow: hidden;
+  z-index: 1;
+}
+/* Radial glow bg */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -60%);
+  width: 700px; height: 500px;
+  background: radial-gradient(ellipse, rgba(123,94,167,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+/* Floating orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float linear infinite;
+}
+.orb1 { width:340px;height:340px;top:-80px;left:-100px;background:radial-gradient(circle,rgba(123,94,167,0.09) 0%,transparent 70%);animation-duration:18s; }
+.orb2 { width:260px;height:260px;bottom:60px;right:-80px;background:radial-gradient(circle,rgba(46,189,133,0.07) 0%,transparent 70%);animation-duration:22s;animation-delay:-8s; }
+.orb3 { width:180px;height:180px;top:30%;left:8%;background:radial-gradient(circle,rgba(240,162,58,0.06) 0%,transparent 70%);animation-duration:15s;animation-delay:-4s; }
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-18px) rotate(2deg); }
+  66% { transform: translateY(10px) rotate(-1deg); }
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px;
+  background: rgba(123,94,167,0.12);
+  border: 1px solid rgba(160,127,212,0.25);
+  border-radius: 100px;
+  font-size: 12px; font-weight: 500; color: var(--v3);
+  font-family: var(--f-m);
+  letter-spacing: 0.5px;
+  margin-bottom: 28px;
+  opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+}
+.eyebrow-dot { width:6px;height:6px;border-radius:50%;background:var(--g);animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+
+.hero-title {
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -2px;
+  max-width: 900px;
+  margin-bottom: 24px;
+  opacity: 0; animation: fadeUp 0.8s ease 0.25s forwards;
+}
+.hero-title .accent { color: var(--v3); font-family: var(--f-s); font-style: italic; font-weight: 400; }
+.hero-title .line2 { display: block; color: var(--text2); font-size: 0.72em; font-weight: 700; margin-top: 4px; }
+
+.hero-sub {
+  font-size: clamp(15px, 2vw, 18px);
+  color: var(--text2);
+  max-width: 540px;
+  line-height: 1.7;
+  font-weight: 400;
+  margin-bottom: 44px;
+  opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
+}
+
+.hero-actions {
+  display: flex; gap: 14px; align-items: center; flex-wrap: wrap; justify-content: center;
+  margin-bottom: 72px;
+  opacity: 0; animation: fadeUp 0.8s ease 0.55s forwards;
+}
+.btn-hero {
+  padding: 14px 30px;
+  background: var(--v);
+  color: #fff;
+  border: none; border-radius: 10px;
+  font-family: var(--f-d); font-size: 15px; font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative; overflow: hidden;
+}
+.btn-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+  opacity: 0; transition: opacity 0.2s;
+}
+.btn-hero:hover { background: var(--v2); transform: translateY(-2px); box-shadow: 0 12px 32px var(--v-glow); }
+.btn-hero:hover::after { opacity: 1; }
+.btn-ghost {
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--text2);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  font-family: var(--f-d); font-size: 15px; font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-ghost:hover { background: var(--bg3); color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+/* App preview mockup */
+.hero-preview {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  opacity: 0; animation: fadeUp 1s ease 0.7s forwards;
+}
+.preview-glow {
+  position: absolute;
+  bottom: -40px; left: 50%; transform: translateX(-50%);
+  width: 70%; height: 80px;
+  background: var(--v-glow);
+  filter: blur(40px);
+  border-radius: 50%;
+}
+.app-window {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+}
+.window-bar {
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.dots { display:flex;gap:6px; }
+.dot { width:11px;height:11px;border-radius:50%; }
+.dot-r{background:#e05858;opacity:.7} .dot-y{background:#f0a23a;opacity:.7} .dot-g{background:#2ebd85;opacity:.7}
+.window-title { font-size:12px;color:var(--text3);font-family:var(--f-m);margin-left:8px; }
+.window-body {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  height: 360px;
+}
+.mock-sidebar {
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  padding: 16px 12px;
+}
+.mock-nav-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 10px; border-radius: 7px;
+  margin-bottom: 3px; font-size: 12px; color: var(--text3);
+}
+.mock-nav-item.active { background: rgba(123,94,167,0.12); color: var(--v3); }
+.mock-nav-dot { width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0; }
+.mock-main { padding: 20px; overflow: hidden; }
+.mock-stats { display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px; }
+.mock-stat { background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px; }
+.ms-l { font-size:9px;color:var(--text3);margin-bottom:4px; }
+.ms-v { font-size:18px;font-family:'Instrument Serif',serif; }
+.mock-row { background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:8px;display:flex;align-items:center;gap:10px; }
+.mock-co { width:24px;height:24px;border-radius:6px;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--v3);flex-shrink:0; }
+.mock-badge { padding:2px 7px;border-radius:10px;font-size:9px;font-family:var(--f-m); }
+.mock-funnel { display:flex;gap:6px;align-items:flex-end;height:60px;margin-top:4px; }
+.mf-bar { flex:1;border-radius:4px 4px 0 0; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* Divider / section */
+section { position:relative;z-index:1; }
+.section-pad { padding: 100px 6vw; }
+
+/* Stats bar */
+.stats-bar {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 6vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  position: relative; z-index: 1;
+}
+.stats-bar::before {
+  content: '';
+  position: absolute; top: -1px; left: 6vw; right: 6vw; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--v), var(--v3), transparent);
+}
+.stat-item {
+  text-align: center;
+  padding: 24px;
+  border-right: 1px solid var(--border);
+  opacity: 0; animation: fadeUp 0.6s ease forwards;
+}
+.stat-item:last-child { border-right: none; }
+.stat-item:nth-child(1){animation-delay:.1s}
+.stat-item:nth-child(2){animation-delay:.2s}
+.stat-item:nth-child(3){animation-delay:.3s}
+.stat-item:nth-child(4){animation-delay:.4s}
+.stat-num {
+  font-size: 44px; font-weight: 800; letter-spacing: -2px;
+  background: linear-gradient(135deg, var(--v3), var(--g));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-desc { font-size: 13px; color: var(--text3); margin-top: 4px; letter-spacing: 0.3px; }
+
+/* Features */
+.section-label {
+  font-family: var(--f-m);
+  font-size: 11px; color: var(--v3);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.section-title .it { font-family: var(--f-s); font-style: italic; font-weight: 400; color: var(--v3); }
+.section-sub { font-size: 16px; color: var(--text2); max-width: 480px; line-height: 1.7; font-weight: 400; }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 60px;
+}
+.feature-card {
+  background: var(--bg);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+.feature-card:hover { background: var(--bg2); }
+.feature-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(160,127,212,0.4), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.feature-card:hover::before { opacity: 1; }
+.f-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.f-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.3px; }
+.f-desc { font-size: 14px; color: var(--text2); line-height: 1.65; font-weight: 400; }
+.f-tag {
+  display: inline-flex; margin-top: 16px;
+  padding: 3px 9px; border-radius: 4px;
+  font-size: 10px; font-family: var(--f-m);
+  background: rgba(255,255,255,0.04);
+  color: var(--text3);
+}
+
+/* How it works */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  margin-top: 60px;
+}
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 32px; left: calc(12.5% + 16px); right: calc(12.5% + 16px);
+  height: 1px;
+  background: linear-gradient(90deg, var(--v), var(--v3), var(--g), transparent);
+  opacity: 0.3;
+}
+.step {
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+}
+.step-num {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  margin: 0 auto 20px;
+  position: relative;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.step:hover .step-num {
+  border-color: var(--v);
+  box-shadow: 0 0 24px var(--v-glow);
+}
+.step-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.step-desc { font-size: 13px; color: var(--text2); line-height: 1.6; font-weight: 400; }
+
+/* Testimonials */
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 60px;
+}
+.testi-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+}
+.testi-card:hover { border-color: var(--border2); transform: translateY(-4px); }
+.testi-card::before {
+  content: '"';
+  position: absolute; top: 16px; right: 20px;
+  font-family: var(--f-s); font-size: 64px;
+  color: rgba(160,127,212,0.12); line-height: 1;
+}
+.testi-text { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 20px; font-weight: 400; }
+.testi-text strong { color: var(--text); font-weight: 600; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px;
+  flex-shrink: 0;
+}
+.testi-name { font-size: 13px; font-weight: 600; }
+.testi-role { font-size: 11px; color: var(--text3); font-family: var(--f-m); margin-top: 1px; }
+
+/* CTA section */
+.cta-wrap {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 80px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-wrap::before {
+  content: '';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(123,94,167,0.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cta-title {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  position: relative;
+}
+.cta-sub { font-size: 16px; color: var(--text2); max-width: 420px; margin: 0 auto 40px; line-height: 1.7; font-weight: 400; }
+.email-form {
+  display: flex; gap: 10px;
+  max-width: 420px; margin: 0 auto;
+  position: relative;
+}
+.email-input {
+  flex: 1; padding: 14px 18px;
+  background: var(--bg4);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: var(--f-d); font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.email-input::placeholder { color: var(--text3); }
+.email-input:focus { border-color: var(--v2); }
+.btn-cta {
+  padding: 14px 24px;
+  background: var(--v);
+  color: #fff;
+  border: none; border-radius: 10px;
+  font-family: var(--f-d); font-size: 14px; font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn-cta:hover { background: var(--v2); box-shadow: 0 8px 24px var(--v-glow); }
+.cta-note { font-size: 12px; color: var(--text3); margin-top: 14px; font-family: var(--f-m); }
+.form-success {
+  display: none;
+  font-size: 15px; color: var(--g); font-weight: 500;
+  padding: 14px;
+  background: rgba(46,189,133,0.08);
+  border: 1px solid rgba(46,189,133,0.2);
+  border-radius: 10px;
+  max-width: 420px; margin: 0 auto;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 6vw;
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; z-index: 1;
+}
+.footer-logo { font-size: 17px; font-weight: 800; }
+.footer-logo span { color: var(--v3); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: var(--text3); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text2); }
+.footer-right { font-size: 12px; color: var(--text3); font-family: var(--f-m); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media(max-width: 900px){
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .stat-item:nth-child(2) { border-right: none; }
+  .features-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 24px 0; }
+  .steps::before { display: none; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .window-body { grid-template-columns: 1fr; height: auto; }
+  .mock-sidebar { display: none; }
+  nav .nav-links { display: none; }
+  .cta-wrap { padding: 48px 24px; }
+  .email-form { flex-direction: column; }
+  footer { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+</style>
+  </head>
+  <body>
+    <!-- Hide landing immediately on /app routes — runs before paint, no flash -->
+    <script>if(window.location.pathname.startsWith('/app')){document.write('<style>#landing{display:none}</style>');}</script>
+
+<div id="landing">
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<nav>
+  <div class="nav-logo">Place<span>Track</span></div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#love">Stories</a></li>
+    <li><a href="#" class="nav-cta" onclick="openLoginModal();return false;">Login</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  
+
+  <h1 class="hero-title">
+    Stop guessing.<br>
+    Start <span class="accent">placing.</span>
+    <span class="line2">Track. Prepare. Get placed.</span>
+  </h1>
+
+  <p class="hero-sub">
+    Track every application, stay consistent with daily tasks, follow a structured prep roadmap — all in one focused tool built for placement season.
+  </p>
+
+  <div class="hero-actions">
+    <button class="btn-hero" onclick="openLoginModal()">
+      Login — Free ↗
+    </button>
+    <button class="btn-ghost" onclick="window.location.href='/app/demo'">
+      See how it works
+    </button>
+  </div>
+
+  <div class="hero-preview">
+    <div class="preview-glow"></div>
+    <div class="app-window">
+      <div class="window-bar">
+        <div class="dots">
+          <div class="dot dot-r"></div>
+          <div class="dot dot-y"></div>
+          <div class="dot dot-g"></div>
+        </div>
+        <div class="window-title">placement tracker.app — Dashboard</div>
+      </div>
+      <div class="window-body">
+        <div class="mock-sidebar">
+          <div style="font-size:14px;font-weight:800;padding:8px 10px 16px;color:var(--text)">Place<span style="color:var(--v3)">Track</span></div>
+          <div class="mock-nav-item active"><div class="mock-nav-dot"></div>Dashboard</div>
+          <div class="mock-nav-item"><div class="mock-nav-dot"></div>Companies</div>
+          <div class="mock-nav-item"><div class="mock-nav-dot"></div>Progress</div>
+          <div class="mock-nav-item"><div class="mock-nav-dot"></div>Study Path</div>
+          <div class="mock-nav-item"><div class="mock-nav-dot"></div>Daily Tasks</div>
+          <div class="mock-nav-item"><div class="mock-nav-dot"></div>Profile</div>
+          <div style="margin-top:auto;padding:12px 10px 0">
+            <div style="background:rgba(240,162,58,.1);border:1px solid rgba(240,162,58,.2);border-radius:8px;padding:8px 10px;font-size:11px;color:var(--a);display:flex;align-items:center;gap:6px">
+              <span>🔥</span> <span style="font-family:var(--f-m);font-size:14px;font-weight:500">7</span> <span style="opacity:.7">day streak</span>
+            </div>
+          </div>
+        </div>
+        <div class="mock-main">
+          <div class="mock-stats">
+            <div class="mock-stat"><div class="ms-l">Companies</div><div class="ms-v">12</div></div>
+            <div class="mock-stat"><div class="ms-l">In Pipeline</div><div class="ms-v" style="color:var(--v3)">5</div></div>
+            <div class="mock-stat"><div class="ms-l">Streak</div><div class="ms-v" style="color:var(--a)">7</div></div>
+            <div class="mock-stat"><div class="ms-l">Today</div><div class="ms-v" style="color:var(--g)">80%</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div>
+              <div style="font-size:11px;color:var(--text3);margin-bottom:8px">Recent Applications</div>
+              <div class="mock-row"><div class="mock-co">G</div><div style="flex:1"><div style="font-size:11px;font-weight:600">Google</div><div style="font-size:9px;color:var(--text3)">SDE Intern</div></div><div class="mock-badge" style="background:var(--blue-bg,rgba(72,146,212,.1));color:var(--b)">OA</div></div>
+              <div class="mock-row"><div class="mock-co" style="color:var(--g)">A</div><div style="flex:1"><div style="font-size:11px;font-weight:600">Amazon</div><div style="font-size:9px;color:var(--text3)">SDE-1</div></div><div class="mock-badge" style="background:rgba(160,127,212,.1);color:var(--v3)">Interview</div></div>
+              <div class="mock-row"><div class="mock-co" style="color:var(--a)">M</div><div style="flex:1"><div style="font-size:11px;font-weight:600">Microsoft</div><div style="font-size:9px;color:var(--text3)">SWE</div></div><div class="mock-badge" style="background:rgba(46,189,133,.1);color:var(--g)">Selected!</div></div>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--text3);margin-bottom:8px">Application Funnel</div>
+              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px">
+                <div class="mock-funnel">
+                  <div class="mf-bar" style="height:52px;background:rgba(72,146,212,.5)"></div>
+                  <div class="mf-bar" style="height:38px;background:rgba(240,162,58,.5)"></div>
+                  <div class="mf-bar" style="height:28px;background:rgba(160,127,212,.5)"></div>
+                  <div class="mf-bar" style="height:18px;background:rgba(46,189,133,.5)"></div>
+                  <div class="mf-bar" style="height:12px;background:rgba(224,88,88,.5)"></div>
+                </div>
+                <div style="display:flex;gap:4px;margin-top:4px">
+                  <div style="flex:1;text-align:center;font-size:8px;color:var(--text3)">App</div>
+                  <div style="flex:1;text-align:center;font-size:8px;color:var(--text3)">OA</div>
+                  <div style="flex:1;text-align:center;font-size:8px;color:var(--text3)">Int</div>
+                  <div style="flex:1;text-align:center;font-size:8px;color:var(--text3)">Sel</div>
+                  <div style="flex:1;text-align:center;font-size:8px;color:var(--text3)">Rej</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">2,400+</div>
+    <div class="stat-desc">Students on waitlist</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">18k+</div>
+    <div class="stat-desc">Applications tracked in beta</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">73%</div>
+    <div class="stat-desc">Avg. daily task completion</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">4.9★</div>
+    <div class="stat-desc">Rating from beta testers</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section-pad" id="features">
+  <div style="max-width:600px">
+    <div class="section-label reveal">What's inside</div>
+    <h2 class="section-title reveal">Everything placement season <span class="it">demands.</span></h2>
+    <p class="section-sub reveal">Six powerful modules. One focused interface. No distractions, no missed deadlines.</p>
+  </div>
+  <div class="features-grid reveal">
+    <div class="feature-card">
+      <div class="f-icon" style="background:rgba(123,94,167,.12)">🏢</div>
+      <div class="f-title">Company Tracker</div>
+      <div class="f-desc">Add every company you've applied to. Track stage — Applied → OA → Interview → Selected. Filter, sort, and never lose track of a deadline.</div>
+      <span class="f-tag">Applications</span>
+    </div>
+    <div class="feature-card">
+      <div class="f-icon" style="background:rgba(72,146,212,.1)">📊</div>
+      <div class="f-title">Visual Funnel</div>
+      <div class="f-desc">See your full application pipeline at a glance — a live funnel chart showing how many are in each stage, plus your selection rate.</div>
+      <span class="f-tag">Insights</span>
+    </div>
+    <div class="feature-card">
+      <div class="f-icon" style="background:rgba(240,162,58,.1)">📚</div>
+      <div class="f-title">Study Roadmap</div>
+      <div class="f-desc">Tailored paths for product-based (DSA, System Design) or service-based (Aptitude, Verbal) companies. Week-by-week, topic-by-topic.</div>
+      <span class="f-tag">Preparation</span>
+    </div>
+    <div class="feature-card">
+      <div class="f-icon" style="background:rgba(46,189,133,.1)">✅</div>
+      <div class="f-title">Daily Tasks</div>
+      <div class="f-desc">Small, achievable tasks every day — solve 2 problems, revise OS concepts, prep an HR answer. Built to keep you moving without overwhelm.</div>
+      <span class="f-tag">Consistency</span>
+    </div>
+    <div class="feature-card">
+      <div class="f-icon" style="background:rgba(224,88,88,.1)">🔥</div>
+      <div class="f-title">Streak System</div>
+      <div class="f-desc">Complete daily tasks to build a streak. A 28-day calendar shows your consistency history. Watch the pattern. Stay accountable to yourself.</div>
+      <span class="f-tag">Motivation</span>
+    </div>
+    <div class="feature-card">
+      <div class="f-icon" style="background:rgba(160,127,212,.12)">🌐</div>
+      <div class="f-title">Public Profile</div>
+      <div class="f-desc">Share your preparation journey — stats, badges, consistency — with a public link. Show it to recruiters, friends, or your college network.</div>
+      <span class="f-tag">Social</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section-pad" id="how" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div style="text-align:center;margin-bottom:0">
+    <div class="section-label reveal" style="display:inline-block">Simple by design</div>
+    <h2 class="section-title reveal" style="text-align:center">From confused to <span class="it">in control</span><br>in four steps.</h2>
+  </div>
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-num">🎯</div>
+      <div class="step-title">Set your target</div>
+      <div class="step-desc">Choose product or service companies. Placement Tracker tailors your entire experience.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">🏢</div>
+      <div class="step-title">Add companies</div>
+      <div class="step-desc">Log applications as you send them. Update the stage after every round.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">✅</div>
+      <div class="step-title">Do daily tasks</div>
+      <div class="step-desc">Complete today's 6 tasks. Mark done. Build your streak one day at a time.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">🚀</div>
+      <div class="step-title">Track, share, win</div>
+      <div class="step-desc">Watch your progress. Share your public profile. Land the offer.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section-pad" id="love">
+  <div class="section-label reveal">From beta testers</div>
+  <h2 class="section-title reveal">Students who used it <span class="it">swear by it.</span></h2>
+  <div class="testi-grid reveal">
+    <div class="testi-card">
+      <div class="testi-text">Placement Tracker literally changed how I approached placements. Before, I was using a messy spreadsheet. Now I open Placement Tracker every morning, do my tasks, and <strong>I actually know where I stand</strong> with every company.</div>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:rgba(123,94,167,.2);color:var(--v3)">RA</div>
+        <div>
+          <div class="testi-name">Rohit B</div>
+          <div class="testi-role">CSE · VBIT Aushapur  </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-text">The streak system is deceptively powerful. I went from studying 2 days a week to <strong>21 consecutive days</strong>. I didn't want to break it. That discipline got me through all the rounds.</div>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:rgba(46,189,133,.15);color:var(--g)">PS</div>
+        <div>
+          <div class="testi-name">Sarayu R</div>
+          <div class="testi-role">IT · NIT Trichy · Placed @ Infosys DSE</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-text">The study roadmap for product companies is gold. It's not overwhelming — it's structured. I used the DSA path and the daily problems feature to <strong>clear 3 online assessments</strong> back to back.</div>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:rgba(240,162,58,.15);color:var(--a)">KM</div>
+        <div>
+          <div class="testi-name">Rohinesh M</div>
+          <div class="testi-role">CS · VBIT Aushapur · Placed @ Amazon</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-pad" id="cta">
+  <div class="cta-wrap">
+    <div class="cta-title reveal">
+      Your placement season<br>starts <span style="color:var(--v3);font-family:'Instrument Serif',serif;font-style:italic;font-weight:400">right now.</span>
+    </div>
+    <p class="cta-sub reveal">Free for students. No credit card needed.</p>
+    <div class="reveal">
+      <button class="btn-cta" onclick="openLoginModal()">Login — Free ↗</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Place<span>Track</span></div>
+  <div class="footer-links">
+    <a href="#">Features</a>
+    <a href="#">How it works</a>
+    <a href="#">Privacy</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="footer-right">© 2025 Placement Tracker · Built for students</div>
+</footer>
+
+<script>
+// Cursor
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+animRing();
+document.querySelectorAll('a,button,.feature-card,.testi-card,.step').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='16px';cur.style.height='16px';ring.style.width='50px';ring.style.height='50px';ring.style.borderColor='rgba(160,127,212,0.6)';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(160,127,212,0.5)';});
+});
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Form — removed (waitlist replaced with direct login CTA)
+
+// Animate stat numbers
+function animateNum(el,target,suffix=''){
+  let current=0;const step=target/60;
+  const interval=setInterval(()=>{
+    current=Math.min(current+step,target);
+    el.textContent=Math.round(current).toLocaleString()+(suffix||'');
+    if(current>=target)clearInterval(interval);
+  },20);
+}
+const statObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const nums=e.target.querySelectorAll('.stat-num');
+      nums.forEach(n=>{
+        const txt=n.textContent;
+        const num=parseInt(txt.replace(/[^0-9]/g,''));
+        const suffix=txt.includes('k+')?' k+':txt.includes('+')?' +':txt.includes('%')?' %':txt.includes('★')?' ★':'';
+        if(num)animateNum(n,num,suffix);
+      });
+      statObs.unobserve(e.target);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('.stats-bar').forEach(el=>statObs.observe(el));
+</script>
+
+<!-- ── Login Modal ── -->
+<div id="lm-overlay" style="display:none" onclick="if(event.target===this)closeLoginModal()">
+  <div id="lm-box" role="dialog" aria-modal="true" aria-label="Sign in">
+    <button id="lm-close" onclick="closeLoginModal()" aria-label="Close">✕</button>
+    <div id="lm-logo">Place<span>Track</span></div>
+    <h2 id="lm-title">Sign in — it's free</h2>
+    <p id="lm-sub">Save your data and access it from anywhere.</p>
+    <button id="lm-google" onclick="doGoogle()">
+      <span id="lm-g-icon">G</span> Continue with Google
+    </button>
+    <div id="lm-divider"><span>or</span></div>
+    <form id="lm-form" onsubmit="doMagic(event)">
+      <input id="lm-email" type="email" placeholder="you@college.edu" required autocomplete="email" />
+      <button type="submit" id="lm-submit">Send magic link</button>
+    </form>
+    <p id="lm-msg"></p>
+  </div>
+</div>
+
+<style>
+#lm-overlay {
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  display: flex; /* toggled via visibility trick below */
+  align-items: center; justify-content: center;
+  padding: 16px;
+}
+#lm-overlay[style*="display:none"] { display: none !important; }
+#lm-box {
+  background: #0e0e14;
+  border: 1px solid rgba(255,255,255,0.11);
+  border-radius: 16px;
+  padding: 36px 32px;
+  width: 100%; max-width: 360px;
+  display: flex; flex-direction: column; gap: 14px;
+  position: relative;
+  font-family: 'Syne', sans-serif;
+}
+#lm-close {
+  position: absolute; top: 14px; right: 16px;
+  background: none; border: none;
+  color: #55546a; font-size: 18px; cursor: pointer;
+  line-height: 1; padding: 4px 6px; border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+#lm-close:hover { color: #eeecf8; background: rgba(255,255,255,0.06); }
+#lm-logo { font-size: 18px; font-weight: 800; color: #eeecf8; }
+#lm-logo span { color: #c9a8ff; }
+#lm-title { font-size: 20px; font-weight: 700; color: #eeecf8; letter-spacing: -0.3px; margin: 0; }
+#lm-sub { font-size: 13px; color: #55546a; margin: -6px 0 0; }
+#lm-google {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 12px 18px;
+  background: #fff; color: #111;
+  border: none; border-radius: 10px;
+  font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: opacity 0.15s;
+}
+#lm-google:hover { opacity: 0.9; }
+#lm-g-icon {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #4285f4; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
+}
+#lm-divider {
+  display: flex; align-items: center; gap: 10px;
+  color: #55546a; font-size: 12px;
+}
+#lm-divider::before, #lm-divider::after {
+  content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.06);
+}
+#lm-form { display: flex; flex-direction: column; gap: 10px; }
+#lm-email {
+  padding: 11px 14px;
+  background: #1c1c2c; border: 1px solid rgba(255,255,255,0.11);
+  border-radius: 10px; color: #eeecf8;
+  font-family: 'Syne', sans-serif; font-size: 14px; outline: none;
+  transition: border-color 0.2s;
+}
+#lm-email::placeholder { color: #55546a; }
+#lm-email:focus { border-color: #7b5ea7; }
+#lm-submit {
+  padding: 11px 18px;
+  background: #7b5ea7; color: #fff;
+  border: none; border-radius: 10px;
+  font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: background 0.2s;
+}
+#lm-submit:hover { background: #a07fd4; }
+#lm-msg { font-size: 13px; min-height: 18px; margin: 0; text-align: center; }
+@media(max-width:480px){
+  #lm-box { padding: 28px 20px; }
+}
+body {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
+</style>
+
+</div><!-- /#landing -->
+
+<!-- Supabase auto-redirect: if user is already logged in, go straight to /app -->
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+  const supabase = createClient(
+    'https://ycynpluvbmmxsqzshegu.supabase.co',
+    'sb_publishable_DZOdmtn6fLdO_I0YymxTuQ_QtS9XL5k'
+  );
+  const { data: { session } } = await supabase.auth.getSession();
+  if (session && !window.location.pathname.startsWith('/app')) {
+  window.location.replace('/app');
+  }
+
+  // ── Login modal auth logic ──────────────────────────────────────────────
+  window.openLoginModal = function() {
+    document.getElementById('lm-overlay').style.display = '';
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('lm-email')?.focus(), 50);
+  };
+  window.closeLoginModal = function() {
+    document.getElementById('lm-overlay').style.display = 'none';
+    document.body.style.overflow = '';
+    document.getElementById('lm-msg').textContent = '';
+    document.getElementById('lm-msg').style.color = '';
+    document.getElementById('lm-email').value = '';
+  };
+  window.doGoogle = async function() {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: window.location.origin + '/app' },
+    });
+    if (error) showMsg(error.message, 'error');
+  };
+  window.doMagic = async function(e) {
+    e.preventDefault();
+    const email = document.getElementById('lm-email').value.trim();
+    if (!email) return;
+    document.getElementById('lm-submit').textContent = 'Sending…';
+    document.getElementById('lm-submit').disabled = true;
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { emailRedirectTo: window.location.origin + '/app' },
+    });
+    document.getElementById('lm-submit').textContent = 'Send magic link';
+    document.getElementById('lm-submit').disabled = false;
+    showMsg(error ? error.message : '✓ Check your email for a login link.', error ? 'error' : 'ok');
+  };
+  function showMsg(text, type) {
+    const el = document.getElementById('lm-msg');
+    el.textContent = text;
+    el.style.color = type === 'error' ? '#e05858' : '#2ebd85';
+  }
+  // ESC to close
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') window.closeLoginModal?.();
+  });
+</script>
+
+    <div id="root"></div>
+    <script type="module">
+  if (window.location.pathname.startsWith('/app')) {
+
+    // ✅ remove landing HTML
+    const landing = document.getElementById('landing');
+    if (landing) landing.remove();
+
+    // ✅ remove landing CSS (THIS IS KEY FIX)
+    const style = document.getElementById('landing-style');
+    if (style) style.remove();
+
+    // ✅ then load React
+    import('/src/main.jsx');
+  }
+</script>
+<script>
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+  });
+</script>
+  </body>
+</html>

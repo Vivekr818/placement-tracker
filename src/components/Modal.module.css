@@ -1,0 +1,60 @@
+/* ── Modal ── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  padding: 16px;
+}
+
+.dialog {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-lg);
+  padding: 24px;
+  width: 490px;
+  max-width: 95vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: var(--text3);
+  font-size: 18px;
+  padding: 4px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: color 0.15s, background 0.15s;
+}
+
+.closeBtn:hover {
+  color: var(--text);
+  background: var(--bg4);
+}
+
+.body {
+  overflow-y: auto;
+  flex: 1;
+}

@@ -1,0 +1,186 @@
+/* ── Sidebar ── */
+.sidebar {
+  width: 220px;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.brand {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brandName {
+  font-family: var(--font-d);
+  font-size: 21px;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+
+.brandIcon {
+  color: var(--accent2);
+}
+
+.brandSub {
+  font-size: 11px;
+  color: var(--text3);
+  font-family: var(--font-m);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* ── Navigation ── */
+.nav {
+  padding: 12px 10px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text2);
+  font-size: 13.5px;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: all 0.15s;
+  margin-bottom: 2px;
+}
+
+.navItem:hover {
+  background: var(--bg4);
+  color: var(--text);
+}
+
+.navItem.active {
+  background: var(--accent-bg);
+  color: var(--accent2);
+  font-weight: 500;
+}
+
+.navIcon {
+  font-size: 16px;
+  width: 18px;
+  height: 18px;
+  opacity: 0.8;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navItem.active .navIcon {
+  opacity: 1;
+}
+
+.navLabel {
+  flex: 1;
+}
+
+/* ── Sidebar Bottom — Streak Pill ── */
+.streakBadge {
+  padding: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.streakPill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--amber-bg);
+  border: 1px solid rgba(245, 166, 35, 0.2);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--amber);
+}
+
+.streakIcon {
+  font-size: 16px;
+}
+
+.streakInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.streakCount {
+  font-family: var(--font-m);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--amber);
+}
+
+.streakLabel {
+  font-size: 12px;
+  color: var(--amber);
+  opacity: 0.8;
+}
+
+/* ── User / Sign-out section ── */
+.userSection {
+  padding: 10px 12px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.userEmail {
+  font-size: 11px;
+  color: var(--text3);
+  font-family: var(--font-m);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.signOutBtn {
+  background: none;
+  border: 1px solid var(--border2);
+  color: var(--text3);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  text-align: left;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.signOutBtn:hover {
+  color: var(--red);
+  border-color: rgba(242, 100, 100, 0.3);
+}
+
+.notLoggedIn {
+  font-size: 11px;
+  color: var(--text3);
+  font-family: var(--font-m);
+  padding: 4px 0;
+}
+
+/* ── Mobile: hidden by default, slides in when open ── */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}

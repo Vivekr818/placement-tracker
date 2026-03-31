@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ── Design Tokens ── */
+:root {
+  /* Backgrounds */
+  --bg:  #0a0a0f;
+  --bg2: #111118;
+  --bg3: #16161f;
+  --bg4: #1e1e2a;
+
+  /* Borders */
+  --border:  rgba(255, 255, 255, 0.07);
+  --border2: rgba(255, 255, 255, 0.12);
+
+  /* Text */
+  --text:  #f0eee8;
+  --text2: #a09fa8;
+  --text3: #6b6a75;
+
+  /* Accent — Purple */
+  --accent:    #7c6af7;
+  --accent2:   #9d8fff;
+  --accent-bg: rgba(124, 106, 247, 0.12);
+
+  /* Semantic colors */
+  --green:    #3ecf8e;
+  --green-bg: rgba(62, 207, 142, 0.1);
+  --amber:    #f5a623;
+  --amber-bg: rgba(245, 166, 35, 0.1);
+  --red:      #f26464;
+  --red-bg:   rgba(242, 100, 100, 0.1);
+  --blue:     #4fa3e0;
+  --blue-bg:  rgba(79, 163, 224, 0.1);
+
+  /* Typography */
+  --font-d: 'DM Serif Display', serif;
+  --font-b: 'Outfit', sans-serif;
+  --font-m: 'DM Mono', monospace;
+
+  /* Radii */
+  --r:    10px;
+  --r-lg: 16px;
+
+  /* Legacy aliases used by components */
+  --color-bg:       var(--bg);
+  --color-surface:  var(--bg2);
+  --color-surface2: var(--bg3);
+  --color-surface3: var(--bg4);
+  --color-border:   var(--border);
+  --color-border2:  var(--border2);
+  --color-text:     var(--text);
+  --color-text2:    var(--text2);
+  --color-muted:    var(--text3);
+  --color-accent:   var(--accent);
+  --color-accent-hover: var(--accent2);
+  --color-accent-glow:  var(--accent-bg);
+  --color-success:  var(--green);
+  --color-success-glow: var(--green-bg);
+  --color-warn:     var(--amber);
+  --color-warn-glow: var(--amber-bg);
+  --color-danger:   var(--red);
+
+  /* Spacing */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+
+  /* Font sizes */
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 14px;
+  --text-lg:   15px;
+  --text-xl:   17px;
+  --text-2xl:  21px;
+  --text-3xl:  26px;
+
+  /* Radii aliases */
+  --radius-sm:   8px;
+  --radius-md:   var(--r);
+  --radius-lg:   var(--r-lg);
+  --radius-full: 9999px;
+}
+
+/* ── CSS Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-b);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+
+a {
+  color: var(--accent2);
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-b);
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-b);
+}
+/* Page transition */
+.page-transition {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.page-transition.fade-out {
+  opacity: 0;
+}

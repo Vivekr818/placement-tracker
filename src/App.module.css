@@ -1,0 +1,45 @@
+/* ── App Shell ── */
+.appShell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Main Content Area ── */
+.mainArea {
+  margin-left: 220px;
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ── Page Content ── */
+.pageContent {
+  padding: 28px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* ── Mobile backdrop (closes sidebar on tap) ── */
+.backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+@media (max-width: 768px) {
+  .mainArea {
+    margin-left: 0;
+  }
+
+  .pageContent {
+    padding: 16px;
+  }
+
+  .backdrop {
+    display: block;
+  }
+}

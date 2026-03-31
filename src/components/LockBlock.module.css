@@ -1,0 +1,43 @@
+.wrapper {
+  position: relative;
+  display: contents; /* doesn't add a box — children keep their layout */
+}
+
+/* When display:contents breaks stacking context we need a real box.
+   Use a block wrapper only when the pill needs to be positioned. */
+.wrapper {
+  display: block;
+  position: relative;
+}
+
+.dimmed {
+  opacity: 0.45;
+  pointer-events: none;
+  user-select: none;
+  filter: blur(1px);
+}
+
+/* Centered pill overlay */
+.pill {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text2);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.icon {
+  font-size: 13px;
+}

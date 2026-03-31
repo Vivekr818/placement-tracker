@@ -1,0 +1,331 @@
+/* ── Tracker page ── */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Shared card ── */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.cardTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+
+.empty {
+  font-size: 13px;
+  color: var(--text3);
+}
+
+/* ── Hero row (2 columns) ── */
+.heroRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ── Upcoming Interviews ── */
+.upcomingCard {
+  border-left: 3px solid var(--accent);
+}
+
+.interviewList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.interviewItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--r);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s;
+}
+
+.interviewItem.urgent {
+  border-color: rgba(245, 166, 35, 0.4);
+  background: var(--amber-bg);
+}
+
+.interviewInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.interviewCompany {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.interviewRole {
+  font-size: 11px;
+  color: var(--text3);
+}
+
+.interviewMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.countdown {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent2);
+  font-family: var(--font-m);
+}
+
+.countdownUrgent {
+  color: var(--amber);
+}
+
+.interviewDate {
+  font-size: 11px;
+  color: var(--text3);
+  font-family: var(--font-m);
+}
+
+/* ── Next Action card ── */
+.actionCard {
+  border-left: 3px solid var(--accent);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.actionCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Accent variants */
+.accent_amber  { border-left-color: var(--amber); }
+.accent_green  { border-left-color: var(--green); }
+.accent_neutral { border-left-color: var(--accent); }
+.accent_subtle  { border-left-color: var(--border2); }
+
+.actionBody {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.actionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.actionTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.actionMessage {
+  font-size: 13.5px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+/* CTA button */
+.ctaBtn {
+  align-self: flex-start;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+  font-family: var(--font-b);
+}
+
+.ctaBtn:hover {
+  opacity: 0.85;
+  transform: translateX(2px);
+}
+
+.cta_amber   { background: var(--amber);  color: #000; }
+.cta_green   { background: var(--green);  color: #000; }
+.cta_neutral { background: var(--accent); color: #fff; }
+.cta_subtle  { background: var(--bg4);    color: var(--text2); border: 1px solid var(--border2); }
+
+/* ── Conversion Funnel (step-based) ── */
+.funnelSteps {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.funnelStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.funnelBubble {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-family: var(--font-m);
+  font-weight: 700;
+  background: var(--bg3);
+  transition: transform 0.2s;
+}
+
+.funnelBubble:hover {
+  transform: scale(1.08);
+}
+
+.funnelStepLabel {
+  font-size: 11px;
+  color: var(--text3);
+  font-family: var(--font-m);
+}
+
+.funnelArrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0 4px;
+  margin-bottom: 18px;
+}
+
+.funnelPct {
+  font-size: 10px;
+  color: var(--text3);
+  font-family: var(--font-m);
+}
+
+.funnelArrowLine {
+  font-size: 18px;
+  color: var(--border2);
+}
+
+/* ── Bottom grid ── */
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ── Weekly Activity ── */
+.weekGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  align-items: flex-end;
+}
+
+.weekDay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.weekDayToday .weekLabel {
+  color: var(--accent2);
+  font-weight: 700;
+}
+
+.weekLabel {
+  font-size: 11px;
+  color: var(--text3);
+}
+
+.weekBars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 48px;
+}
+
+.weekBar {
+  width: 10px;
+  border-radius: 3px 3px 0 0;
+  min-height: 3px;
+  transition: height 0.3s ease;
+}
+
+.weekCount {
+  font-size: 10px;
+  color: var(--text3);
+  font-family: var(--font-m);
+  min-height: 14px;
+}
+
+.weekLegend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 12px;
+}
+
+.legendDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Type success bars ── */
+.typeBars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Heatmap card ── */
+.heatmapCard {
+  padding: 14px 16px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .heroRow,
+  .bottomGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .funnelSteps {
+    justify-content: center;
+  }
+}
+
