@@ -41,24 +41,24 @@
   --r:    10px;
   --r-lg: 16px;
 
-  /* Legacy aliases */
-  --color-bg:           var(--bg);
-  --color-surface:      var(--bg2);
-  --color-surface2:     var(--bg3);
-  --color-surface3:     var(--bg4);
-  --color-border:       var(--border);
-  --color-border2:      var(--border2);
-  --color-text:         var(--text);
-  --color-text2:        var(--text2);
-  --color-muted:        var(--text3);
-  --color-accent:       var(--accent);
+  /* Legacy aliases used by components */
+  --color-bg:       var(--bg);
+  --color-surface:  var(--bg2);
+  --color-surface2: var(--bg3);
+  --color-surface3: var(--bg4);
+  --color-border:   var(--border);
+  --color-border2:  var(--border2);
+  --color-text:     var(--text);
+  --color-text2:    var(--text2);
+  --color-muted:    var(--text3);
+  --color-accent:   var(--accent);
   --color-accent-hover: var(--accent2);
   --color-accent-glow:  var(--accent-bg);
-  --color-success:      var(--green);
+  --color-success:  var(--green);
   --color-success-glow: var(--green-bg);
-  --color-warn:         var(--amber);
-  --color-warn-glow:    var(--amber-bg);
-  --color-danger:       var(--red);
+  --color-warn:     var(--amber);
+  --color-warn-glow: var(--amber-bg);
+  --color-danger:   var(--red);
 
   /* Spacing */
   --space-xs:  4px;
@@ -98,8 +98,11 @@
 
 html,
 body {
-  min-height: 100%;
-  overflow-x: hidden; /* prevent horizontal scroll globally */
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 body {
@@ -117,7 +120,6 @@ body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
 
-/* ── Base element styles (safe — no layout positioning) ── */
 a {
   color: var(--accent2);
   text-decoration: none;
@@ -133,8 +135,7 @@ select,
 textarea {
   font-family: var(--font-b);
 }
-
-/* ── Page transition ── */
+/* Page transition */
 .page-transition {
   opacity: 1;
   transition: opacity 0.25s ease;

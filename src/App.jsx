@@ -117,6 +117,7 @@ const { state, actions } = usePlaceTrackState(userId, handleDbError);
           onMenuToggle={() => setSidebarOpen((o) => !o)}
           user={user}
           onNavigate={handleNavigate}
+          onSignOut={user ? handleSignOut : null}
         />
         <main className={styles.pageContent}>
           {renderPage()}

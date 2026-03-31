@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { supabase } from '../lib/supabaseClient.js';
 import { todayStr, formatDisplay } from '../utils/dateUtils.js';
 import styles from './Topbar.module.css';
 
-export default function Topbar({ pageTitle, onMenuToggle, user, onNavigate }) {
+export default function Topbar({ pageTitle, onMenuToggle, user, onNavigate, onSignOut }) {
   const [open, setOpen] = useState(false);
   const dateDisplay = formatDisplay(todayStr());
   const initial = user?.email ? user.email[0].toUpperCase() : '?';
@@ -48,9 +47,9 @@ export default function Topbar({ pageTitle, onMenuToggle, user, onNavigate }) {
 
         <div
           className={styles.dropdownItem}
-          onClick={async () => {
-            await supabase.auth.signOut();
+          onClick={() => {
             setOpen(false);
+            onSignOut?.();
           }}
         >
           Logout
