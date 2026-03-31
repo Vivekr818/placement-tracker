@@ -98,7 +98,7 @@ const { state, actions } = usePlaceTrackState(userId, handleDbError);
 }
 
   return (
-  <div id="app-root" className={`page-transition ${styles.appShell}`}>
+    <div id="app-root" className={`page-transition ${styles.appShell}`}>
       {/* Mobile backdrop */}
       {sidebarOpen && (
         <div className={styles.backdrop} onClick={() => setSidebarOpen(false)} />

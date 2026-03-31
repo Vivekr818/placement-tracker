@@ -43,6 +43,10 @@ body {
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
+}
+
+/* Custom cursor — landing only */
+#landing {
   cursor: none;
 }
 
@@ -70,8 +74,8 @@ body {
 }
 body:hover .cursor { opacity: 1; }
 
-/* Grid noise overlay */
-body::before {
+/* Grid noise overlay — landing only */
+#landing::before {
   content: '';
   position: fixed; inset: 0;
   background-image:
@@ -82,9 +86,9 @@ body::before {
   z-index: 0;
 }
 
-/* Nav */
-nav {
-  position: fixed; top: 0; left: 0; right: 0;
+/* Nav — landing only */
+#landing nav {
+  
   z-index: 100;
   padding: 20px 6vw;
   display: flex; align-items: center; justify-content: space-between;

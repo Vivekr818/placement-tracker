@@ -1,14 +1,13 @@
 /* ── Topbar ── */
 .topbar {
+  position: relative;
+  z-index: 10;
   padding: 16px 28px;
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: rgba(10, 10, 15, 0.9);
-  position: sticky;
-  top: 0;
-  z-index: 50;
   backdrop-filter: blur(10px);
   flex-shrink: 0;
 }
@@ -89,6 +88,7 @@
   background: var(--bg3);
   color: var(--text);
 }
+
 .loginButton {
   padding: 8px 14px;
   border-radius: 8px;
@@ -98,6 +98,7 @@
   font-size: 13px;
   cursor: pointer;
 }
+
 .loginButton:hover {
   opacity: 0.85;
 }

@@ -52,12 +52,13 @@
 /* ── Stage Summary ── */
 .stageSummary {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 12px;
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   padding: 20px;
+  overflow: hidden;
 }
 
 /* ── Loading State ── */
@@ -104,7 +105,8 @@
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .table {

@@ -12,7 +12,10 @@ const NAV_ITEMS = [
 
 export default function Sidebar({ activePage, onNavigate, streak, user, onSignOut, isOpen }) {
   return (
-    <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
+    <aside
+      className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}
+      style={{ position: 'fixed', top: 0, left: 0, width: 220, height: '100vh', zIndex: 100 }}
+    >
       <div className={styles.brand}>
         <div
   className={styles.brandName}

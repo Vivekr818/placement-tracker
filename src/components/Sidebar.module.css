@@ -1,21 +1,22 @@
 /* ── Sidebar ── */
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 220px;
+  height: 100vh;
+  z-index: 100;
   background: var(--bg2);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 100;
   overflow-y: auto;
 }
 
 .brand {
   padding: 20px 20px 16px;
   border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .brandName {
@@ -39,6 +40,10 @@
 
 /* ── Navigation ── */
 .nav {
+  position: static;
+  top: unset;
+  left: unset;
+  right: unset;
   padding: 12px 10px;
   flex: 1;
   overflow-y: auto;
@@ -91,10 +96,11 @@
   flex: 1;
 }
 
-/* ── Sidebar Bottom — Streak Pill ── */
+/* ── Streak Pill ── */
 .streakBadge {
   padding: 12px;
   border-top: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .streakPill {
@@ -132,13 +138,14 @@
   opacity: 0.8;
 }
 
-/* ── User / Sign-out section ── */
+/* ── User Section ── */
 .userSection {
   padding: 10px 12px;
   border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 6px;
+  flex-shrink: 0;
 }
 
 .userEmail {
@@ -173,7 +180,7 @@
   padding: 4px 0;
 }
 
-/* ── Mobile: hidden by default, slides in when open ── */
+/* ── Mobile: slide-in overlay ── */
 @media (max-width: 768px) {
   .sidebar {
     transform: translateX(-100%);

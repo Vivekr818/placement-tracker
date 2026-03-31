@@ -1,45 +1,40 @@
 /* ── App Shell ── */
 .appShell {
-  display: flex;
+  display: block;
   min-height: 100vh;
 }
 
 /* ── Main Content Area ── */
 .mainArea {
   margin-left: 220px;
-  flex: 1;
+  width: calc(100% - 220px);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-width: 0;
 }
 
 /* ── Page Content ── */
 .pageContent {
   padding: 28px;
   flex: 1;
-  overflow-y: auto;
 }
 
-/* ── Mobile backdrop (closes sidebar on tap) ── */
+/* ── Mobile backdrop ── */
 .backdrop {
-  display: none;
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 99;
 }
 
+/* ── Mobile Layout ── */
 @media (max-width: 768px) {
   .mainArea {
     margin-left: 0;
+    width: 100%;
   }
 
   .pageContent {
     padding: 16px;
-  }
-
-  .backdrop {
-    display: block;
   }
 }
