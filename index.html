@@ -7,7 +7,7 @@
     <meta property="og:title" content="PlaceTrack – Your Placement Command Center">
     <meta property="og:description" content="Track applications, manage daily prep, and stay consistent during placement season.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://your-domain.com">
+    <meta property="og:url" content="https://placetrack.vercel.app">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Placement Tracker for Students | Track Jobs, Tasks & Prep – PlaceTrack</title>
@@ -1063,7 +1063,10 @@ body.loaded {
     if (style) style.remove();
 
     // ✅ then load React
-    import('/src/main.jsx');
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = '/src/main.jsx';
+    document.body.appendChild(script);
   }
 </script>
 <script>
