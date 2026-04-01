@@ -26,11 +26,7 @@ const PAGE_TITLES = {
 
 export default function App({ isDemo }) {
   const { user, loading } = useAuth();
-  useEffect(() => {
-  if (!loading && !user && !isDemo) {
-    window.location.href = '/app/demo';
-  }
-}, [user, loading, isDemo]);
+  
 
   const [activePage, setActivePage] = useState('dashboard');
   const [toast, setToast]           = useState(null);
@@ -93,7 +89,11 @@ const { state, actions } = usePlaceTrackState(userId, handleDbError);
     );
   }
   if (!user && !isDemo) {
-  return null;
+  return (
+    <div style={{ padding: 40, textAlign: 'center' }}>
+      Please login to continue
+    </div>
+  );
 }
 
   return (
