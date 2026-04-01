@@ -26,6 +26,11 @@ const PAGE_TITLES = {
 
 export default function App({ isDemo }) {
   const { user, loading } = useAuth();
+  useEffect(() => {
+  if (!loading && !user && !isDemo) {
+    window.location.href = '/app/demo';
+  }
+}, [user, loading, isDemo]);
 
   const [activePage, setActivePage] = useState('dashboard');
   const [toast, setToast]           = useState(null);
@@ -58,29 +63,27 @@ const { state, actions } = usePlaceTrackState(userId, handleDbError);
   async function handleSignOut() {
   const app = document.getElementById('app-root');
 
-  // start fade out
   app.classList.add('fade-out');
 
-  // wait for animation
   setTimeout(async () => {
     await supabase.auth.signOut();
-    window.location.replace('/app/demo');
+    window.location.href = '/app/demo';
   }, 250);
 }
-
   function renderPage() {
-    const shared = { state, actions };
-    switch (activePage) {
-      case 'dashboard': return <Dashboard {...shared} />;
-      case 'companies': return <Companies {...shared} showToast={showToast} user={user} />;
-      case 'tracker':   return <Tracker   {...shared} onNavigate={handleNavigate} user={user} />;
-      case 'prep':      return <StudyPath  {...shared} />;
-      case 'tasks':     return <DailyTasks {...shared} showToast={showToast} user={user} />;
-      case 'profile':   return <Profile    {...shared} showToast={showToast} user={user} />;
-      case 'about':    return <About />;
-      default:          return <Dashboard {...shared} />;
-    }
+  const shared = { state, actions };
+
+  switch (activePage) {
+    case 'dashboard': return <Dashboard {...shared} />;
+    case 'companies': return <Companies {...shared} showToast={showToast} user={user} />;
+    case 'tracker':   return <Tracker {...shared} onNavigate={handleNavigate} user={user} />;
+    case 'prep':      return <StudyPath {...shared} />;
+    case 'tasks':     return <DailyTasks {...shared} showToast={showToast} user={user} />;
+    case 'profile':   return <Profile {...shared} showToast={showToast} user={user} />;
+    case 'about':     return <About />;
+    default:          return <Dashboard {...shared} />;
   }
+}
 
   if (loading) {
     return (
@@ -90,11 +93,7 @@ const { state, actions } = usePlaceTrackState(userId, handleDbError);
     );
   }
   if (!user && !isDemo) {
-  return (
-    <div style={{ padding: 40, textAlign: 'center' }}>
-      Please login to continue
-    </div>
-  );
+  return null;
 }
 
   return (
@@ -108,7 +107,7 @@ const { state, actions } = usePlaceTrackState(userId, handleDbError);
         onNavigate={handleNavigate}
         streak={state.streak}
         user={user}
-        onSignOut={user ? handleSignOut : null}
+        onSignOut={handleSignOut}
         isOpen={sidebarOpen}
       />
       <div className={styles.mainArea}>
@@ -117,7 +116,7 @@ const { state, actions } = usePlaceTrackState(userId, handleDbError);
           onMenuToggle={() => setSidebarOpen((o) => !o)}
           user={user}
           onNavigate={handleNavigate}
-          onSignOut={user ? handleSignOut : null}
+          onSignOut={handleSignOut}
         />
         <main className={styles.pageContent}>
           {renderPage()}
