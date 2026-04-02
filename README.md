@@ -1,4 +1,4 @@
-# PlaceTrack
+# Placement Tracker
 
 A focused placement preparation tool for students — track applications, build consistency, and stay on top of your prep.
 
