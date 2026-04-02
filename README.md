@@ -2,7 +2,7 @@
 
 A focused placement preparation tool for students — track applications, build consistency, and stay on top of your prep.
 
-**Live Demo** → [placetrack.vercel.app](https://placement-tracker-live.vercel.app) &nbsp;|&nbsp;
+**Live Demo** → [placement-tracker.vercel.app](https://placement-tracker-live.vercel.app) &nbsp;|&nbsp;
 
 ---
 
@@ -142,7 +142,7 @@ VITE_SUPABASE_ANON_KEY=your_anon_key
 ## Author
 
 **[Vivek Rajoju]**
-[GitHub](https://github.com/your-username) · [LinkedIn](www.linkedin.com/in/vivek-r-3b164831a)
+
 
 ---
 
