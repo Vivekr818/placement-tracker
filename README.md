@@ -142,8 +142,6 @@ VITE_SUPABASE_ANON_KEY=your_anon_key
 ## Author
 
 **[Vivek Rajoju]**
-
-
 ---
 
 > Built during placement season to solve a real problem. Dogfooded throughout.

@@ -13,8 +13,8 @@
   --border2: rgba(255, 255, 255, 0.12);
 
   /* Text */
-  --text:  #f0eee8;
-  --text2: #a09fa8;
+  --text:  #ffffff;
+  --text2: #9896aa;
   --text3: #6b6a75;
 
   /* Accent — Purple */
@@ -106,10 +106,14 @@ body {
 }
 
 body {
-  font-family: var(--font-b);
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+}
+
+/* Scope React app styles to #root only — prevents leaking into landing page */
+#root {
+  font-family: var(--font-b);
   font-size: 14px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -127,12 +131,16 @@ a {
 
 button {
   cursor: pointer;
+}
+
+#root button {
+  cursor: pointer;
   font-family: var(--font-b);
 }
 
-input,
-select,
-textarea {
+#root input,
+#root select,
+#root textarea {
   font-family: var(--font-b);
 }
 /* Page transition */
